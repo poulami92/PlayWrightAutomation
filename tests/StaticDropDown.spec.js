@@ -1,6 +1,6 @@
 const {test,expect} = require('@playwright/test')
 
-test('Page Palywright test', async function({page})
+test('@smoke Page Palywright test', async function({page})
 {
 
    const username= page.locator('#username');
@@ -13,7 +13,6 @@ test('Page Palywright test', async function({page})
 
    const dropdown = page.locator('select.form-control');
    await dropdown.selectOption('Consultant');
-   await page.pause();
 
    
    

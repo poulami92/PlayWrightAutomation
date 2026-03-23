@@ -1,6 +1,6 @@
 const {test,expect} = require('@playwright/test')
 
-test('Page Palywright test', async function({page})
+test('@smoke Page Palywright test', async function({page})
 {
 
    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");

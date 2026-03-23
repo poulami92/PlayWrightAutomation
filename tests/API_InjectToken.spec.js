@@ -31,7 +31,7 @@ test.beforeEach(async ({page})=>{
       },token);
 })
 
-test('Add to Cart Palywright test', async function({page})
+test('@api Add to Cart Palywright test', async function({page})
 {
 
    await page.goto("https://rahulshettyacademy.com/client");
@@ -61,7 +61,7 @@ test('Add to Cart Palywright test', async function({page})
    
 })
 
-test('Verify order id on history page',async ({page})=>
+test('@api Verify order id on history page',async ({page})=>
 {
    const orderId=await apiUtils.createOrder(createOrderPayload,token);
 

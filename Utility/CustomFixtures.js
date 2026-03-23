@@ -8,7 +8,8 @@ exports.customTest=base.test.extend(
             "userEmail": "Gpd@gmail.com",
             "userPassword": "Kolkata@1",
             "product": "ADIDAS"
-
         }
     }
 )
+
+

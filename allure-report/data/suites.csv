@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","16999","@smoke Page Palywright test","","2026-03-23","passed","2026-03-23","","FrameHandle.spec.js","",""
+"","14917","@smoke Page Palywright test","","2026-03-23","passed","2026-03-23","","StaticDropDown.spec.js","",""
+"","16582","@smoke Page Palywright test","","2026-03-23","passed","2026-03-23","","CalendarHandle.spec.js","",""

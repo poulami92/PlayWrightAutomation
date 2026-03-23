@@ -2,7 +2,7 @@ const {test,expect,request} = require('@playwright/test')
 
 
 
-test('Verify order id on history page',async ({page})=>
+test('@api Verify order id on history page',async ({page})=>
 {
    await page.route('https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=shetty',
       async (route)=>

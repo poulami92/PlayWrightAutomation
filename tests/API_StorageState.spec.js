@@ -15,6 +15,8 @@ let apiContext;
 let apiUtils;
 let webContext;
 
+// test.describe.configure({mode:'serial'})
+// test.describe.configure({mode:'parallel'})
 test.beforeAll( async function({browser})
 {
    const context = await browser.newContext();
@@ -31,7 +33,7 @@ test.beforeAll( async function({browser})
 
 })
 
-test('Add to Cart Palywright test', async function()
+test('@api Add to Cart Palywright test', async function()
 {
    const page=await webContext.newPage();
    await page.goto("https://rahulshettyacademy.com/client");
@@ -61,7 +63,7 @@ test('Add to Cart Palywright test', async function()
    
 })
 
-test('Verify order id on history page',async ()=>
+test('@api Verify order id on history page',async ()=>
 {
    const page=await webContext.newPage();
 

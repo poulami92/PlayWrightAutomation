@@ -2,7 +2,7 @@ const {test,expect,request} = require('@playwright/test')
 
 
 
-test('Verify order id on history page',async ({page})=>
+test('@api Verify order id on history page',async ({page})=>
 {
    page.on('request', (request)=>{
       console.log(request.url());

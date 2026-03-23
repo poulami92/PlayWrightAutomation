@@ -2,7 +2,7 @@ const {test,expect,request} = require('@playwright/test')
 
 const fakePayLoadOrders = { data: [], message: "No Orders" };
 
-test('Verify order id on history page',async ({page})=>
+test('@api Verify order id on history page',async ({page})=>
 {
    await page.route('https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*',
       async (route)=>

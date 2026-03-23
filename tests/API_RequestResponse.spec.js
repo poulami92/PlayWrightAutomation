@@ -30,7 +30,7 @@ test.beforeAll( async function()
 
 })
 
-test('Verify order id on history page',async ({page})=>
+test('@api Verify order id on history page',async ({page})=>
 {
    let createOrderResponse=await apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order',
       {

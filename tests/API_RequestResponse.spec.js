@@ -21,6 +21,7 @@ test.beforeAll( async function()
          data:loginPayload
       }
    )
+  
    expect(loginResponse.ok()).toBeTruthy();
 
    //get response body

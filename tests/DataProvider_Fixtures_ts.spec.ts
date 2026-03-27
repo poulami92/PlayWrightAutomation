@@ -1,6 +1,7 @@
-const {expect} = require('@playwright/test')
-const {PageObjectFactory} =require('../PageObjects/PageObjectFactory')
-const {customTest} = require('../Utility/CustomFixtures')
+
+import {expect} from '@playwright/test';
+import {PageObjectFactory} from '../PageObjects_ts/PageObjectFactory';
+import {customTest} from '../Utility_ts/CustomFixtures';
 
 customTest('Page Palywright test', async function({page,loginData})
 {
@@ -11,7 +12,7 @@ customTest('Page Palywright test', async function({page,loginData})
    const userEmail=loginData.userEmail;
    const password =loginData.userPassword;
    const product = loginData.product;
-    
+   
    await loginPage.gotoUrl();
    await loginPage.validLogin(userEmail,password);
    await expect(loginPage.getLoginSuccessLocator()).toHaveText('Login Successfully');

@@ -1,6 +1,4 @@
 const {test,expect,request} = require('@playwright/test')
-const {ApiUtils} = require('../Utility/ApiUtils')
-
 const loginPayload={userEmail: "Gpd@gmail.com", userPassword: "Kolkata@1"};
 const createOrderPayload=
 {"orders":[
@@ -12,7 +10,6 @@ const createOrderPayload=
 
 let token;
 let apiContext;
-let apiUtils;
 let webContext;
 
 // test.describe.configure({mode:'serial'})

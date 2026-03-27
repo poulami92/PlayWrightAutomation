@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "Smoke" : "npx playwright test --grep @smoke",
-    "E2ETest" : "npx playwright test E2EAppTest_POM.spec.js"
+    "Smoke": "npx playwright test --grep @smoke",
+    "E2ETest": "npx playwright test E2EAppTest_POM.spec.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,10 @@
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.5.0",
     "allure-commandline": "^2.38.1",
-    "allure-playwright": "^3.6.0"
+    "allure-playwright": "^3.6.0",
+    "typescript": "^6.0.2"
+    },
+  "dependencies": {
+    "@cucumber/cucumber": "^12.7.0"
   }
 }

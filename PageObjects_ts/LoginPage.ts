@@ -1,13 +1,21 @@
-class LoginPage
+import {Locator, Page} from '@playwright/test';
+
+export class LoginPage
 {
-    constructor(page)
+    page : Page;
+    username : Locator;
+    password : Locator;
+    login : Locator;
+    loginSuccess : Locator;
+
+
+    constructor(page:Page)
     {
        this.page=page; 
        this.username=page.getByPlaceholder('email@example.com');
        this.password=page.getByPlaceholder('enter your passsword');
        this.login=page.getByRole('button',{name:'Login'});
        this.loginSuccess=page.locator('#toast-container');
-       this.loginFail=page.locator("[class*='flyInOut']");
     }
 
     async gotoUrl()
@@ -15,7 +23,7 @@ class LoginPage
         await this.page.goto('https://rahulshettyacademy.com/client')
     }
 
-    async validLogin(userEmail,password)
+    async validLogin(userEmail : string,password : string)
     {
        await this.username.fill(userEmail);
        await this.password.fill(password);
@@ -27,11 +35,6 @@ class LoginPage
         return this.loginSuccess;
     }
 
-    getLoginFailLocator()
-    {
-        return this.loginFail;
-    }
-
 }
 
-module.exports={LoginPage};
+//module.exports={LoginPage};

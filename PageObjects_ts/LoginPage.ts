@@ -30,7 +30,7 @@ export class LoginPage
        await this.login.click();
     }
 
-    getLoginSuccessLocator()
+    getLoginSuccessLocator() :Locator
     {
         return this.loginSuccess;
     }

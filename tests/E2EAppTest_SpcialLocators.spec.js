@@ -42,9 +42,9 @@ test('Page Palywright test', async function({page})
    await page.getByText('India',{exact:true}).click();
 
    await page.getByText('Place Order').click();
-   await expect (page.getByText('Thankyou for the order1.')).toBeVisible();
+   await expect (page.getByText('Thankyou for the order.')).toBeVisible();
 
-   await page.pause();
+   //await page.pause();
 
    const orderIdsLocator= page.locator('label.ng-star-inserted');
    await orderIdsLocator.first().waitFor();

@@ -1,61 +1,62 @@
-import {test,expect} from '@playwright/test';
-import {PageObjectFactory} from '../PageObjects_ts/PageObjectFactory'
+import { test, expect } from '@playwright/test';
+import { PageObjectFactory } from '../PageObjects_ts/PageObjectFactory';
+import { customTest } from '../Utility_ts/CustomFixtures';
 
-test('Page Palywright test', async function({page})
-{
+interface LoginData {
+    userEmail: string;
+    userPassword: string;
+    products: string[];
+}
+
+customTest('E2E App Test with POM', async ({ page, loginData }: { page: any; loginData: LoginData }) => {
    const pageObjectFactory = new PageObjectFactory(page);
-   const loginPage=pageObjectFactory.getLoginPage();
-   const productCatalogPage=pageObjectFactory.getProductCatalogPage();
-   const products =['ZARA','ADIDAS'];
-   const userEmail='Gpd@gmail.com';
-   const password ='Kolkata@1';
+   const loginPage = pageObjectFactory.getLoginPage();
+   const productCatalogPage = pageObjectFactory.getProductCatalogPage();
+   const cartPage = pageObjectFactory.getCartPage();
+   const checkOutPage = pageObjectFactory.getCheckOutPage();
+   const confirmationPage = pageObjectFactory.getConfirmationPage();
+   const ordersPage = pageObjectFactory.getOrdersPage();
 
-   
+   const userEmail: string = loginData.userEmail;
+   const password: string = loginData.userPassword;
+   const products: string[] = loginData.products;
+
+   // Login
    await loginPage.gotoUrl();
-   await loginPage.validLogin(userEmail,password);
+   await loginPage.validLogin(userEmail, password);
    await expect(loginPage.getLoginSuccessLocator()).toHaveText('Login Successfully');
 
+   // Add products to cart
    await productCatalogPage.waitForFirstProduct();
-   for(let j=0;j<products.length;j++)
+   for(let j = 0; j < products.length; j++)
    {
-     let product=products[j];
+     const product = products[j];
      await productCatalogPage.addProductToCart(product);
      await expect(productCatalogPage.getProductAddedSuccessLocator()).toHaveText('Product Added To Cart');
    }
    await productCatalogPage.clickOnCart();
 
-   for(let j=0;j<products.length;j++)
+   // Verify products in cart
+   for(let j = 0; j < products.length; j++)
    {
-     let product=products[j];
-     await expect(page.getByText(product)).toBeVisible();
+     const product = products[j];
+     await expect(cartPage.getProductLocator(product)).toBeVisible();
    }
 
-   await page.getByRole('button',{name:'Checkout'}).click();
+   // Checkout
+   await cartPage.clickOnCheckOut();
+   await checkOutPage.selectCountryInDropDown('India');
+   await checkOutPage.clickOnPlaceOrder();
 
-   await page.getByPlaceholder('Select Country').pressSequentially('ind');
-   await page.getByText('India',{exact:true}).click();
-
-   await page.getByText('Place Order').click();
-   await expect (page.getByText('Thankyou for the order.')).toBeVisible();
-
-   const orderIdsLocator= page.locator('label.ng-star-inserted');
-   await orderIdsLocator.first().waitFor();
-   const orderIdCount = await orderIdsLocator.count();
-   let orderNos=[];
-   for(let i=0;i<orderIdCount;i++)
-   {
-      const orderIdContent:any=await orderIdsLocator.nth(i).textContent();
-      const orderNo=orderIdContent.trim().split(" ")[1].trim();
-      orderNos.push(orderNo);
-   }
-
+   // Verify confirmation
+   await expect(confirmationPage.getConfirmationLocator()).toHaveText(' Thankyou for the order. ');
+   const orderNos: string[] = await confirmationPage.getOrderIdNos();
    console.log(orderNos);
 
-   await page.getByRole('listitem').getByRole('button',{name:'ORDERS'}).click();
-   for(let j=0;j<orderNos.length;j++)
+   // Verify order in history
+   await ordersPage.clickOnOrders();
+   for(let j = 0; j < orderNos.length; j++)
    {
-     await expect (page.getByText(orderNos[j])).toBeVisible();
+     await expect(ordersPage.getOrderNo(orderNos[j])).toBeVisible();
    }
-
-   
 });

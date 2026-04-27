@@ -1,8 +1,8 @@
 const {test,expect} = require('@playwright/test')
 const {PageObjectFactory} =require('../PageObjects/PageObjectFactory')
-const testData = require('../Utility/TestData.json')
+const {customTest} = require('../Utility/CustomFixtures')
 
-test('Page Palywright test', async function({page})
+customTest('Page Palywright test', async function({page,loginData})
 {
    const pageObjectFactory = new PageObjectFactory(page);
    const loginPage=pageObjectFactory.getLoginPage();
@@ -12,9 +12,9 @@ test('Page Palywright test', async function({page})
    const confirmationPage = pageObjectFactory.getConfirmationPage();
    const ordersPage = pageObjectFactory.getOrdersPage();
 
-   const products =testData.products;
-   const userEmail=testData.userEmail;
-   const password =testData.userPassword;
+   const userEmail=loginData.userEmail;
+   const password =loginData.userPassword;
+   const products =loginData.products;
 
    
    await loginPage.gotoUrl();

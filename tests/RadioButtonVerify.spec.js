@@ -16,9 +16,10 @@ test('Page Palywright test', async function({page})
    const okBtn=page.locator('#okayBtn');
    await okBtn.click();
 
-   expect(userRadio).toBeChecked();
+   await expect(userRadio).toBeChecked();
    const flag=await userRadio.isChecked();
    console.log(flag);
+   expect(flag).toBeTruthy();
    //await page.pause();
 
    

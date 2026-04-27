@@ -7,9 +7,12 @@ test('Page Palywright test', async function({page})
 
    const documentLink = page.locator("a[href*='document']");
 
+   const context=page.context();
+
    const [childPage]=await Promise.all(
       [
-         page.waitForEvent('popup'),
+         // page.waitForEvent('popup'),
+         context.waitForEvent('page'),
          documentLink.click()
       ]
    );

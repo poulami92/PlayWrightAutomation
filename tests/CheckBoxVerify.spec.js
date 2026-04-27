@@ -24,10 +24,8 @@ test('Page Palywright test', async function({page})
    await termCheck.uncheck();
    flag= await termCheck.isChecked();
    console.log('after unchecking '+flag);
+   await expect(termCheck).not.toBeChecked();
    expect(flag).toBeFalsy();
-
-   //To Verify
-
    
    
 });

@@ -115,7 +115,8 @@ test('Page Palywright test', async function({page})
        let orderNoOnOrderHistory= await orderIdRows.nth(i).locator('th').textContent();
        if(orderNoOnOrderHistory===orderNos[j])
        {
-        expect(orderIdRows.nth(i).locator('th')).toHaveText(orderNos[j])
+        await expect(orderIdRows.nth(i).locator('th')).toHaveText(orderNos[j])
+        break;
        }
       }
    }

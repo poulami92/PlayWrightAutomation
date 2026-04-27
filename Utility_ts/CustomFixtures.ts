@@ -1,28 +1,19 @@
-//const base = require('@playwright/test')
+import { test as base } from '@playwright/test';
 
-import {test} from '@playwright/test';
-
-interface TestDataForLogin
-{
-   userEmail : string;
-   userPassword : string;
-   product : string;
+// Define fixture types interface
+interface LoginDataFixture {
+    userEmail: string;
+    userPassword: string;
+    products: string[];
 }
 
-export const customTest=test.extend<{loginData : TestDataForLogin}>(
-    
-    {
-
-       loginData:
-        {
-
-            "userEmail": "Gpd@gmail.com",
-            "userPassword": "Kolkata@1",
-            "product": "ADIDAS"
-        }
+export const customTest = base.extend<{loginData:LoginDataFixture}>({
+    loginData: {
+        userEmail: "Gpd@gmail.com",
+        userPassword: "Kolkata@1",
+        products: ["ZARA", "ADIDAS"]
     }
-)
-
+});
 
 
 

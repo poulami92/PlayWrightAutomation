@@ -13,11 +13,14 @@ test('Page Palywright test', async function({page})
       let text=await option.nth(i).textContent();
       if(text.trim()==='India')
       {
-        option.nth(i).click();
+        await option.nth(i).click();
         break;
       }
    }
 
-   await page.pause();
+   await expect(page.locator('#autocomplete')).toHaveValue('India');
+
+   const inputText=await page.locator('#autocomplete').inputValue();
+   expect(inputText).toEqual('India');
    
 });

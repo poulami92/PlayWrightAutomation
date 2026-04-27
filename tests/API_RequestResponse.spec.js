@@ -33,13 +33,14 @@ test.beforeAll( async function()
 
 test('@api Verify order id on history page',async ({page})=>
 {
-   let createOrderResponse=await apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order',
-      {
-         data:createOrderPayload,
-          headers: {
+   let createOrderHeader={
                 'Authorization': token,
                 'Content-Type': 'application/json'
             }
+   let createOrderResponse=await apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order',
+      {
+         data:createOrderPayload,
+         headers:createOrderHeader
       }
    )
 

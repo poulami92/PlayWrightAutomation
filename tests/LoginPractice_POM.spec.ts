@@ -3,7 +3,7 @@ import { LoginPracticePage } from '../PageObjects/LoginPracticePage';
 
 test('Login Practice Page - Complete Login Flow', async function({ page }: { page: Page })
 {
-    const loginPracticePage = new LoginPracticePage(page);
+    const loginPracticePage:LoginPracticePage = new LoginPracticePage(page);
     
     const username: string = 'rahulshettyacademy';
     const password: string = 'Learning@830$3mK2';
@@ -31,7 +31,7 @@ test('Login Practice Page - Complete Login Flow', async function({ page }: { pag
 
 test('Login Practice Page - Using Combined Login Method', async function({ page }: { page: Page })
 {
-    const loginPracticePage = new LoginPracticePage(page);
+    const loginPracticePage:LoginPracticePage = new LoginPracticePage(page);
     
     const username: string = 'rahulshettyacademy';
     const password: string = 'Learning@830$3mK2';

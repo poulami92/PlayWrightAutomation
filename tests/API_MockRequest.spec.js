@@ -7,7 +7,9 @@ test('@api Verify order id on history page',async ({page})=>
    await page.route('https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=shetty',
       async (route)=>
       {
-         await route.continue({url:'https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=Poulami'});
+         await route.continue({
+            url:'https://rahulshettyacademy.com/Library/GetBook.php?AuthorName=Poulami'
+         });
       }
    );
 

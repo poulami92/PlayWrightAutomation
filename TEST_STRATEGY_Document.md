@@ -200,19 +200,19 @@ This document defines the comprehensive testing strategy for MarsAir's flight bo
 ```
                     /\
                    /  \
-                  / E2E \         5% - End-to-End Tests
+                  / E2E\         5% - End-to-End Tests
                  /______\
                 /        \
                / Security \      15% - Security Tests
               /____________\
              /              \
             /   Functional   \   30% - Functional Tests
-           /________________ \
-          /                   \
-         /   Mobile & UX       \ 40% - Mobile/Responsive Tests
-        /_____________________ \
-       /                         \
-      /  Data Validation & Unit  \ 10% - Input/Unit Tests
+           /__________________\
+          /                    \
+         /   Mobile & UX        \ 40% - Mobile/Responsive Tests
+        /________________________\
+       /                          \
+      /  Data Validation & Unit    \ 10% - Input/Unit Tests
      /______________________________\
 ```
 

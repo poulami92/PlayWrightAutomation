@@ -11,18 +11,25 @@ customTest('Page Palywright test', async function({page,loginData})
    
    const userEmail=loginData.userEmail;
    const password =loginData.userPassword;
-   const product = loginData.product;
+   const products = loginData.products;
    
    await loginPage.gotoUrl();
    await loginPage.validLogin(userEmail,password);
    await expect(loginPage.getLoginSuccessLocator()).toHaveText('Login Successfully');
 
    await productCatalogPage.waitForFirstProduct();
-   await productCatalogPage.addProductToCart(product);
-   await expect(productCatalogPage.getProductAddedSuccessLocator()).toHaveText('Product Added To Cart');
-    
+   for(let j=0;j<products.length;j++)
+   {
+      await productCatalogPage.addProductToCart(products[j]);
+      await expect(productCatalogPage.getProductAddedSuccessLocator()).toHaveText('Product Added To Cart');
+   }
    await productCatalogPage.clickOnCart();
-   await expect(page.getByText(product)).toBeVisible();
+
+   for(let j=0;j<products.length;j++)
+   {
+     await expect(page.getByText(products[j])).toBeVisible();
+   }
+   
    
 
    
